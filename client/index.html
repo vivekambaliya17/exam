@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="http://localhost:8989/userdetail" method="post">
+        name: <input type="text" name="username" id="username" placeholder="username"><br>
+        email: <input type="text" name="email" id="email" placeholder="email"><br>
+        name: <input type="text" name="password" id="password" placeholder="password"><br>
+        name: <input type="text" name="confirmpassword" id="confirmpassword" placeholder="confirmpassword"><br>
+        <input type="submit" onclick="fourdata()">
+    </form>
+    <script>
+        async function fourdata() {
+            let usename = document.getElementById('confirmpassword').value
+            let email = document.getElementById('email').value
+            let password = document.getElementById('password').value
+            let confirmpassword = document.getElementById('confirmpassword').value
+            let data = {
+                username: usename,
+                email: email,
+                password: password,
+                confirmpassword: confirmpassword
+
+
+            }
+            let req = await fetch(`http://localhost:8989/userdetail`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+
+        }
+    </script>
+</body>
+
+</html>
