@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Profile Page</title>
+  <style>
+    /* Your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f2f2f2;
+      margin: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Style the order history table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* Style the shipping addresses section */
+    .shipping-addresses {
+      margin-top: 2rem;
+    }
+
+    .address {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    .address h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>E-commerce Profile Page</h1>
+  </header>
+
+  <main>
+    <h2>Personal Information</h2>
+    <p>Name: John Doe</p>
+    <p>Email: johndoe@example.com</p>
+
+    <h2>Order History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>123456</td>
+          <td>2023-07-18</td>
+          <td>$150.00</td>
+          <td>Delivered</td>
+        </tr>
+        <tr>
+          <td>789012</td>
+          <td>2023-07-12</td>
+          <td>$98.50</td>
+          <td>Shipped</td>
+        </tr>
+        <!-- Add more rows for additional orders -->
+      </tbody>
+    </table>
+
+    <div class="shipping-addresses">
+      <h2>Shipping Addresses</h2>
+      <div class="address">
+        <h3>Home</h3>
+        <p>John Doe</p>
+        <p>123 Main Street</p>
+        <p>City, State 12345</p>
+        <p>Country</p>
+      </div>
+      <!-- Add more address divs for additional addresses -->
+    </div>
+  </main>
+</body>
+</html>

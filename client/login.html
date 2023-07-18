@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   username: <input type="text" name="username" id="username"><br>
+   password: <input type="text" name="password" id="password"><br>
+   <button onclick="login()">login</button>
+   <script>
+    async function login() {
+        event.preventDefault()
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+        let data = {
+            username: username,
+            password: password,
+        }
+        console.log(data);
+        let req = await fetch(`http://localhost:8989/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if(data == "done"){
+                    window.location.href="profile.html";
+                }
+                else{
+                    alert(data)
+                }
+            })
+
+    }
+</script>
+</body>
+</html>

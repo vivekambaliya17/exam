@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin-left: auto;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .main {
+            max-width: 905px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        main h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        main p {
+            margin-bottom: 1rem;
+        }
+
+        .main-box {
+            max-width: 33%;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-box img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 1rem;
+        }
+
+        .main-box h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-box p {
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 1rem;
+        }
+
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* .description {
+      font-style: italic;
+    } */
+    </style>
+    <header>
+        <div class="logo">
+            <img src="css/31530356_bird_2.jpg" alt="My Website Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">addproduct</a></li>
+                <li><a href="#">myproduct</a></li>
+                <li><a href="#">logout</a></li>
+                <li><a href="#">delete </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <h2>Personal Information</h2>
+        <p>Name: John Doe</p>
+        <p>Email: johndoe@example.com</p>
+        <div class="box">
+            <main class="main-box">
+                <img src="css/31530356_bird_2.jpg" alt="Product Image">
+                <h2>Product Title</h2>
+                <p class="price">$19.99</p>
+                <p class="description">
+                    This is a brief description of the product. It contains all the essential details you need to know
+                    before purchasing.
+                </p>
+                <button>Add to Cart</button>
+            </main>
+        </div>
+    </main>
+    <script>
+        async function allproduct() {
+           let req=  await fetch("http://localhost:8989/allproduct")
+            let res = await req.json()
+            console.log(res);
+
+        }
+        allproduct()
+    </script>
+</body>
+
+</html>

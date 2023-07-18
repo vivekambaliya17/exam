@@ -11,6 +11,7 @@ let app = express();
 app.use(cookieParser())
 app.use(cors())
 app.use(express.json());
+app.use(express.urlencoded({extends:true}))
 app.use('/',routes)
 app.listen(port , ()=>{
     console.log(`localhost:${port}`);
