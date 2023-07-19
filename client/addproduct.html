@@ -8,30 +8,143 @@
 </head>
 
 <body>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- <form action="http://localhost:8989/userdetail" method="post" enctype="multipart/form-data"> -->
-    name: <input type="text" name="username" id="username" placeholder="username"><br>
-    email: <input type="text" name="email" id="email" placeholder="email"><br>
-    name: <input type="text" name="password" id="password" placeholder="password"><br>
-    name: <input type="text" name="confirmpassword" id="confirmpassword" placeholder="confirmpassword"><br>
-    <!-- <input type="submit"> -->
-    <button onclick="fourdata()">zxvv</button>
-    <!-- </form> -->
+        /* Style the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin-left: auto;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav .activ {
+            background-color: #555;
+        }
+
+        .main {
+            max-width: 905px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        main h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        main p {
+            margin-bottom: 1rem;
+        }
+
+        .main-box {
+            max-width: 33%;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-box img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 1rem;
+        }
+
+        .main-box h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-box p {
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 1rem;
+        }
+
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+    <header>
+        <div class="logo">
+            <a href="profile.html"><img src="css/31530356_bird_2.jpg" alt="My Website Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="activ" href="addproduct.html">addproduct</a></li>
+                <li><a href="myproduct.html">myproduct</a></li>
+                <li><a href="login.html">logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        productname: <input type="text" name="productname" id="productname" placeholder="productname"><br>
+        productprice: <input type="text" name="productprice" id="productprice" placeholder="productprice"><br>
+        img: <input type="text" name="img" id="img" placeholder="img"><br>
+        <button onclick="fourdata()">zxvv</button>
+
+    </main>
     <script>
         async function fourdata() {
             event.preventDefault()
-            let username = document.getElementById('username').value
-            let email = document.getElementById('email').value
-            let password = document.getElementById('password').value
-            let confirmpassword = document.getElementById('confirmpassword').value
+            let token = document.cookie
+
+            let productname = document.getElementById('productname').value
+            let productprice = document.getElementById('productprice').value
+            let img = document.getElementById('img').value
             let data = {
-                username: username,
-                email: email,
-                password: password,
-                confirmpassword: confirmpassword
+                productname: productname,
+                productprice: productprice,
+                img: img,
             }
             console.log(data);
-            let req = await fetch(`http://localhost:8989/productadd`, {
+            await fetch(`http://localhost:8989/productadd/${token}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,16 +153,33 @@
             }).then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    if(data == "done"){
-                        window.location.href="login.html";
+                    if (data == "done") {
+                        window.location.href = "myproduct.html";
                     }
-                    else{
+                    else {
                         alert(data)
                     }
                 })
 
         }
     </script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- </form> -->
+
 </body>
 
 </html>

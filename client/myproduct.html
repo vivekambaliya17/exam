@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin-left: auto;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+        nav .activ {
+            background-color: #555;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 33%;
+            width: 27%;
+            margin: 5px;
+        }
+
+        .product-box img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            margin-top: 20px;
+        }
+
+        .product-name {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #007bff;
+            margin: 5px 0;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+     <header>
+        <div class="logo">
+            <a href="profile.html"><img src="css/31530356_bird_2.jpg" alt="My Website Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="addproduct.html">addproduct</a></li>
+                <li><a class="activ" href="myproduct.html">myproduct</a></li>
+                <li><a href="login.html">logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container" id="container" >
+
+    </div>
+    <script>
+        let token = document.cookie
+        async function yourproduct() {
+            let req = await fetch(`http://localhost:8989/yourproduct/${token}`)
+            let res = await req.json()
+            console.log(res);
+            let ele = ""
+            for (let i = 0; i < res.length; i++) {
+                // const element = array[i];
+                ele += `<div class="product-box">
+                    <img src="${res[i].img}" alt="Product Image">
+                        <div class="product-details">
+                            <h2 class="product-name">${res[i].productname}</h2>
+                            <p class="product-price">$${res[i].productprice}</p>
+                            
+                        </div>
+                        <button onclick="Editproduct('${res[i]._id}')">Edit</button>
+                </div>`
+
+            }
+            document.getElementById("container").innerHTML = ele
+
+        }
+        yourproduct()
+        function Editproduct(id) {
+            console.log(id);
+            localStorage.setItem("productID", id);
+            window.location.href = "productEdit.html";
+
+        }
+    </script>
+</body>
+
+</html>

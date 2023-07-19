@@ -8,14 +8,98 @@
 </head>
 
 <body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+    </style>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmpassword">confirmpassword:</label>
+                <input type="text" id="confirmpassword" name="confirmpassword" required>
+            </div>
+            <div class="form-group">
+                <!-- <input type="submit" value="Register"> -->
+                <button onclick="fourdata()">submit</button>
+
+            </div>
+        </form>
+    </div>
 
     <!-- <form action="http://localhost:8989/userdetail" method="post" enctype="multipart/form-data"> -->
-    name: <input type="text" name="username" id="username" placeholder="username"><br>
+    <!-- name: <input type="text" name="username" id="username" placeholder="username"><br>
     email: <input type="text" name="email" id="email" placeholder="email"><br>
     name: <input type="text" name="password" id="password" placeholder="password"><br>
-    name: <input type="text" name="confirmpassword" id="confirmpassword" placeholder="confirmpassword"><br>
+    name: <input type="text" name="confirmpassword" id="confirmpassword" placeholder="confirmpassword"><br> -->
     <!-- <input type="submit"> -->
-    <button onclick="fourdata()">zxvv</button>
     <!-- </form> -->
     <script>
         async function fourdata() {
@@ -40,10 +124,10 @@
             }).then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    if(data == "done"){
-                        window.location.href="login.html";
+                    if (data == "done") {
+                        window.location.href = "login.html";
                     }
-                    else{
+                    else {
                         alert(data)
                     }
                 })

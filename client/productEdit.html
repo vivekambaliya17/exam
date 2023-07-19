@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="main">
+        productname: <input type="text" name="productname" id="productname" placeholder="productname"><br>
+        productprice: <input type="text" name="productprice" id="productprice" placeholder="productprice"><br>
+        img: <input type="text" name="img" id="img" placeholder="img"><br>
+        <button onclick="fourdata()">submit</button>
+        <button onclick="Delete()">Delete product</button>
+
+    </main>
+    <script>
+        async function Delete() {
+            let proID = localStorage.getItem("productID")
+            console.log(proID);
+            let req = await fetch(`http://localhost:8989/productDelete/${proID}`)
+            let res = await req.json()
+            window.location.href = "myproduct.html";
+        }
+        async function fourdata(){
+            let proID = localStorage.getItem("productID")
+            let productname = document.getElementById('productname').value
+            let productprice = document.getElementById('productprice').value
+            let img = document.getElementById('img').value
+            let data = {
+                productname: productname,
+                productprice: productprice,
+                img: img,
+            }
+            console.log(data);
+            let req = await fetch(`http://localhost:8989/productEdit/${proID}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data == "done") {
+                        window.location.href = "myproduct.html";
+                    }
+                    else {
+                        alert(data)
+                    }
+                })
+        }
+    </script>
+</body>
+</html>

@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 let product = new mongoose.Schema({
     productname:{
         type:String,
-        require:true
     },
     productprice:{
         type:String,
-        require:true
+    },
+    img:{
+        type:String,
     },
     userID:{
         type:mongoose.Schema.Types.ObjectId,

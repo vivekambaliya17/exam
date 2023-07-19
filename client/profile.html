@@ -111,20 +111,17 @@
             flex-wrap: wrap;
         }
 
-        /* .description {
-      font-style: italic;
-    } */
+     
     </style>
     <header>
         <div class="logo">
-            <img src="css/31530356_bird_2.jpg" alt="My Website Logo">
+            <a href="profile.html"><img src="css/31530356_bird_2.jpg" alt="My Website Logo"></a>
         </div>
         <nav>
             <ul>
-                <li><a href="#">addproduct</a></li>
-                <li><a href="#">myproduct</a></li>
-                <li><a href="#">logout</a></li>
-                <li><a href="#">delete </a></li>
+                <li><a href="addproduct.html">addproduct</a></li>
+                <li><a href="myproduct.html">myproduct</a></li>
+                <li><a href="login.html">logout</a></li>
             </ul>
         </nav>
     </header>
@@ -132,6 +129,7 @@
         <h2>Personal Information</h2>
         <p>Name: John Doe</p>
         <p>Email: johndoe@example.com</p>
+        <h2>All Product</h2>
         <div class="box">
             <main class="main-box">
                 <img src="css/31530356_bird_2.jpg" alt="Product Image">
@@ -146,13 +144,20 @@
         </div>
     </main>
     <script>
+        let token = document.cookie
         async function allproduct() {
-           let req=  await fetch("http://localhost:8989/allproduct")
+           let req=  await fetch(`http://localhost:8989/allproduct/${token}`)
             let res = await req.json()
             console.log(res);
 
         }
+        async function myuser() {
+           let req=  await fetch(`http://localhost:8989/myuser/${token}`)
+            let res = await req.json()
+            console.log(res);
+        }
         allproduct()
+        myuser()
     </script>
 </body>
 
